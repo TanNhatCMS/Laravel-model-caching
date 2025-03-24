@@ -4,12 +4,11 @@ namespace TanNhatCMS\ModelCaching;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
-use TanNhatCMS\ModelCaching\Contracts\BuilderInterface;
 use TanNhatCMS\ModelCaching\Contracts\Cacheable;
 
 /**
- * Trait HasCache
- * 
+ * Trait HasCache.
+ *
  * Hỗ trợ caching cho model, giúp tăng tốc truy vấn dữ liệu.
  * Supports model caching, enhancing query performance.
  */
@@ -21,14 +20,14 @@ trait HasCache
      */
     protected static function bootHasCache(): void
     {
-        static::updating(fn($instance) => static::flushCache($instance));
-        static::deleting(fn($instance) => static::flushCache($instance));
-        static::created(fn() => Cache::forget(static::getCacheKeyList()));
-        static::updated(fn($instance) => static::flushCache($instance));
-        static::deleted(fn($instance) => static::flushCache($instance));
+        static::updating(fn ($instance) => static::flushCache($instance));
+        static::deleting(fn ($instance) => static::flushCache($instance));
+        static::created(fn () => Cache::forget(static::getCacheKeyList()));
+        static::updated(fn ($instance) => static::flushCache($instance));
+        static::deleted(fn ($instance) => static::flushCache($instance));
 
         if (method_exists(static::class, 'trashed')) {
-            static::restored(fn($instance) => static::flushCache($instance));
+            static::restored(fn ($instance) => static::flushCache($instance));
         }
     }
 
@@ -47,13 +46,13 @@ trait HasCache
      * Tạo khóa cache dựa trên ID và key tùy chọn.
      * Generate a cache key based on ID and an optional key.
      *
-     * @param int|string $id
-     * @param string|null $key
+     * @param  int|string  $id
+     * @param  string|null  $key
      * @return string
      */
     public static function getCacheKey(int|string $id, ?string $key = null): string
     {
-        return md5(sprintf("%s_%s_%s", Str::slug(static::class), $key ?? static::primaryCacheKey(), $id));
+        return md5(sprintf('%s_%s_%s', Str::slug(static::class), $key ?? static::primaryCacheKey(), $id));
     }
 
     /**
@@ -64,7 +63,7 @@ trait HasCache
      */
     public static function getCacheKeyList(): string
     {
-        return md5(sprintf("all_%s_cached_keys", Str::slug(static::class)));
+        return md5(sprintf('all_%s_cached_keys', Str::slug(static::class)));
     }
 
     /**
@@ -82,14 +81,14 @@ trait HasCache
      * Xóa cache của model khi có sự thay đổi.
      * Clears the model cache when changes occur.
      *
-     * @param mixed $instance
+     * @param  mixed  $instance
      * @return void
      */
     protected static function flushCache($instance): void
     {
         $cacheKeys = [
             static::getCacheKey($instance->{static::primaryCacheKey()}),
-            static::getCacheKeyList()
+            static::getCacheKeyList(),
         ];
         Cache::forget($cacheKeys);
         static::flushRelatedCache($instance);
@@ -99,7 +98,7 @@ trait HasCache
      * Xóa cache liên quan của model.
      * Clears the related model cache.
      *
-     * @param mixed $model
+     * @param  mixed  $model
      * @return void
      */
     protected static function flushRelatedCache($model): void
@@ -117,7 +116,7 @@ trait HasCache
      * Lấy bản ghi gốc của model từ bản sao.
      * Get the original record of a model from its copy.
      *
-     * @param mixed $instance
+     * @param  mixed  $instance
      * @return static
      */
     public static function getOrigin($instance): static

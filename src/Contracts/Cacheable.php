@@ -3,8 +3,8 @@
 namespace TanNhatCMS\ModelCaching\Contracts;
 
 /**
- * Interface Cacheable
- * 
+ * Interface Cacheable.
+ *
  * Định nghĩa các phương thức cần thiết cho model hỗ trợ caching.
  * Defines the required methods for cacheable models.
  */

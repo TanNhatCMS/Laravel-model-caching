@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use TanNhatCMS\ModelCaching\Traits\Cachable;
 
 /**
- * Class TestModel
- * 
+ * Class TestModel.
+ *
  * Model giả lập để test caching.
  */
 class TestModel extends Model

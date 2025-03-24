@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Schema;
 /**
  * Tạo bảng test_models để kiểm thử.
  */
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Chạy migration để tạo bảng.
      */
