@@ -6,8 +6,8 @@ use Closure;
 use Illuminate\Support\Collection;
 
 /**
- * Interface BuilderInterface
- * 
+ * Interface BuilderInterface.
+ *
  * Giao diện trình xây dựng truy vấn hỗ trợ caching.
  * Query builder interface for caching.
  */
