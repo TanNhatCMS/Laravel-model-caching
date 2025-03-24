@@ -2,9 +2,9 @@
 
 namespace TanNhatCMS\ModelCaching\Tests;
 
-use Orchestra\Testbench\TestCase as BaseTestCase;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Orchestra\Testbench\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -32,7 +32,7 @@ abstract class TestCase extends BaseTestCase
     }
 
     /**
-     * Xóa bảng sau khi test
+     * Xóa bảng sau khi test.
      */
     protected function tearDown(): void
     {
