@@ -1,0 +1,51 @@
+{
+  "name": "tannhatcms/model-caching",
+  "description": "A caching system for Laravel models to enhance performance.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "TanNhatCMS",
+      "email": "your-email@example.com",
+      "homepage": "https://github.com/TanNhatCMS",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=8.1",
+    "laravel/framework": "^10.0|^11.0|^12.0",
+    "illuminate/support": "^10.0|^11.0|^12.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "TanNhatCMS\\ModelCaching\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "TanNhatCMS\\ModelCaching\\Tests\\": "tests/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.0",
+    "orchestra/testbench": "^8.0"
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit --testdox",
+    "test-failing": "vendor/bin/phpunit --order-by=defects --stop-on-failure",
+    "test-coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-text"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "prefer-stable": true
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "TanNhatCMS\\ModelCaching\\ModelCachingServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "stable"
+}
+  
